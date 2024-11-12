@@ -7,7 +7,8 @@ Instructions:
 Review the Code:
 Download and carefully read the provided hashing implementation. Analyze each method, class, and variable to understand their purpose and how they contribute to the overall functionality.
 
-Write a simple GUI interface using JFrame.  You can use WindowBuilderLinks to an external site. for this part, or any WYSISYG, including ChatGPT or NectirAI.  The GUI program should allow the user to enter in an id, and show the record associated with that ID.
+Run both the console main and the main that includes the simple GUI interface using JFrame.  You can use WindowBuilderLinks to an external site. for making GUIs in Eclipse or any WYSISYG, including ChatGPT or NectirAI.  The GUI program allows the user to enter in an id, and show the record associated with that ID.
+
 Write Documentation:
 Write clear and concise documentation for the code, following industry standards. The documentation should include:
 
