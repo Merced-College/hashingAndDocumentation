@@ -1,4 +1,13 @@
-package hashingAndDocumentation;
+package hashingAndDocumentation;//comment this out if you do not need a package
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -45,6 +54,64 @@ public class SongProgram {
         for (SongRecord song : songMap.values()) {
             System.out.println(song);
         }
+    }
+    
+    // GUI method to search for a song by ID
+    public void openSearchGui() {
+        // Create the main frame
+        JFrame frame = new JFrame("Song Lookup");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a panel to hold input and button
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+
+        // Label, Text Field, and Button
+        JLabel label = new JLabel("Enter Song ID:");
+        JTextField idField = new JTextField(20);
+        JButton searchButton = new JButton("Search");
+
+        // Add label, text field, and button to panel
+        panel.add(label);
+        panel.add(idField);
+        panel.add(searchButton);
+
+        // Result area to display song details
+        JTextArea resultArea = new JTextArea(5, 30);
+        resultArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(resultArea);
+        panel.add(scrollPane);
+
+        // Add action listener for the search button
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = idField.getText();
+                SongRecord song = getSongById(id);
+                if (song != null) {
+                    resultArea.setText("Song Found:\n" + song.toString());
+                } else {
+                    resultArea.setText("Song with ID " + id + " not found.");
+                }
+            }
+        });
+
+        // Add panel to frame
+        frame.add(panel);
+        frame.setVisible(true);
+    }
+
+    // Main method to demonstrate functionality and open GUI
+    public static void main2(String[] args) {
+        SongProgram program = new SongProgram();
+
+        // Load songs from a CSV file
+        String filePath = "data.csv";  // replace with actual file path
+        program.loadSongsFromCSV(filePath);
+
+        // Open GUI for searching songs by ID
+        program.openSearchGui();
     }
 
     // Main method to demonstrate functionality
